@@ -1,0 +1,94 @@
+{
+  "$description": "Kaleb & Co. brand asset library \u2014 torn dividers + brush underlines. Alpha silhouettes recolored to canonical tokens (DESIGN.md v1.4 / tokens.json). coral renamed persimmon 2026-07-22, same hex #EE6242.",
+  "base_url": "https://cdn.jsdelivr.net/gh/kalebloosbrock/brand-assets@main/",
+  "assets": [
+    {
+      "file": "hk-torn--white.png",
+      "width": 1600,
+      "height": 168,
+      "bytes": 33483,
+      "sha1": "f03c6e500bb2",
+      "type": "torn",
+      "color": "white",
+      "hex": "#FAFBF7",
+      "mode": "light"
+    },
+    {
+      "file": "hk-torn--newsprint.png",
+      "width": 1600,
+      "height": 168,
+      "bytes": 18603,
+      "sha1": "d08a641f027c",
+      "type": "torn",
+      "color": "newsprint",
+      "hex": "#F0F2ED",
+      "mode": "light"
+    },
+    {
+      "file": "hk-torn--panel-dark.png",
+      "width": 1600,
+      "height": 168,
+      "bytes": 18648,
+      "sha1": "b80fadce2894",
+      "type": "torn",
+      "color": "panel-dark",
+      "hex": "#1F2426",
+      "mode": "dark"
+    },
+    {
+      "file": "hk-brush--teal.png",
+      "width": 681,
+      "height": 89,
+      "bytes": 7727,
+      "sha1": "45a5d941eb2c",
+      "type": "brush",
+      "color": "teal",
+      "hex": "#0E7C72",
+      "mode": "light"
+    },
+    {
+      "file": "hk-brush--persimmon.png",
+      "width": 681,
+      "height": 89,
+      "bytes": 7672,
+      "sha1": "c5a965f2e834",
+      "type": "brush",
+      "color": "persimmon",
+      "hex": "#EE6242",
+      "mode": "light"
+    },
+    {
+      "file": "hk-brush--gold.png",
+      "width": 681,
+      "height": 89,
+      "bytes": 7672,
+      "sha1": "91ace5c5e4b6",
+      "type": "brush",
+      "color": "gold",
+      "hex": "#E0A33A",
+      "mode": "light"
+    },
+    {
+      "file": "hk-brush--teal-lifted.png",
+      "width": 681,
+      "height": 89,
+      "bytes": 7697,
+      "sha1": "4328d4ae356d",
+      "type": "brush",
+      "color": "teal-lifted",
+      "hex": "#3FB3A6",
+      "mode": "dark"
+    },
+    {
+      "file": "hk-brush--persimmon-lifted.png",
+      "width": 681,
+      "height": 89,
+      "bytes": 7698,
+      "sha1": "a532394cdc72",
+      "type": "brush",
+      "color": "persimmon-lifted",
+      "hex": "#F0775E",
+      "mode": "dark"
+    }
+  ]
+}

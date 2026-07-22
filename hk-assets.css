@@ -1,0 +1,49 @@
+/* ============================================================
+   KALEB & CO. — BRAND ASSET LIBRARY
+   Torn-paper dividers + hand-brush underlines.
+   Silhouettes recolored to canonical tokens (DESIGN.md v1.4 / tokens.json).
+   ------------------------------------------------------------
+   HOST: GitHub repo `brand-assets`, served via jsDelivr CDN.
+   BASE: https://cdn.jsdelivr.net/gh/kalebloosbrock/brand-assets@main/
+   >> If your GitHub username or repo name differs, find-replace the
+      base URL on every line below and you are done.
+   NOTE: "coral" was renamed "persimmon" on 2026-07-22 (same hex #EE6242).
+   ============================================================ */
+
+:root{
+  /* --- torn dividers — color = the section the tear belongs to --- */
+  --hk-torn-white:             url('https://cdn.jsdelivr.net/gh/kalebloosbrock/brand-assets@main/hk-torn--white.png');
+  --hk-torn-newsprint:         url('https://cdn.jsdelivr.net/gh/kalebloosbrock/brand-assets@main/hk-torn--newsprint.png');
+  --hk-torn-panel-dark:        url('https://cdn.jsdelivr.net/gh/kalebloosbrock/brand-assets@main/hk-torn--panel-dark.png');
+
+  /* --- brush underlines — one accent color each --- */
+  --hk-brush-teal:             url('https://cdn.jsdelivr.net/gh/kalebloosbrock/brand-assets@main/hk-brush--teal.png');
+  --hk-brush-persimmon:        url('https://cdn.jsdelivr.net/gh/kalebloosbrock/brand-assets@main/hk-brush--persimmon.png');
+  --hk-brush-gold:             url('https://cdn.jsdelivr.net/gh/kalebloosbrock/brand-assets@main/hk-brush--gold.png');
+  --hk-brush-teal-lifted:      url('https://cdn.jsdelivr.net/gh/kalebloosbrock/brand-assets@main/hk-brush--teal-lifted.png');
+  --hk-brush-persimmon-lifted: url('https://cdn.jsdelivr.net/gh/kalebloosbrock/brand-assets@main/hk-brush--persimmon-lifted.png');
+}
+
+/* --- torn divider ------------------------------------------------ */
+/* default = white; add a modifier class for other section colors.   */
+/* add --flip to tear from the opposite side.                        */
+.hk-torn{
+  display:block; width:100%; aspect-ratio:1600 / 168;
+  background:var(--hk-torn-white) center / 100% 100% no-repeat;
+}
+.hk-torn--flip{ transform:scaleY(-1); }
+.hk-torn--newsprint{  background-image:var(--hk-torn-newsprint); }
+.hk-torn--panel-dark{ background-image:var(--hk-torn-panel-dark); }
+
+/* --- brush underline --------------------------------------------- */
+/* wrap the word in <span class="hk-brush">…</span>; default = teal.  */
+.hk-brush{ position:relative; white-space:nowrap; }
+.hk-brush::after{
+  content:""; position:absolute; left:-.02em; right:-.06em; bottom:-.1em;
+  height:.40em; background:var(--hk-brush-teal) center bottom / 100% 100% no-repeat;
+  z-index:0;
+}
+.hk-brush--persimmon::after{        background-image:var(--hk-brush-persimmon); }
+.hk-brush--gold::after{             background-image:var(--hk-brush-gold); }
+.hk-brush--teal-lifted::after{      background-image:var(--hk-brush-teal-lifted); }
+.hk-brush--persimmon-lifted::after{ background-image:var(--hk-brush-persimmon-lifted); }
