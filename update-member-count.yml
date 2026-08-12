@@ -1,0 +1,47 @@
+# AIxUXR live member count · save as .github/workflows/update-member-count.yml
+# in the brand-assets repo. Requires two repo secrets (Settings → Secrets → Actions):
+#   DISCORD_BOT_TOKEN — the AIxUXR Assistant's bot token
+#   DISCORD_GUILD_ID  — the server's ID (right-click server name → Copy Server ID)
+# Privacy: only the AGGREGATE count leaves Discord — no member names, ids, or presence.
+name: Update AIxUXR member count
+
+on:
+  schedule:
+    - cron: "17 6 * * *"    # daily, 06:17 UTC (01:17 Chicago) — off the :00 stampede
+  workflow_dispatch: {}      # manual "Run workflow" button for instant refreshes
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch aggregate member count from Discord
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          GUILD_ID: ${{ secrets.DISCORD_GUILD_ID }}
+        run: |
+          set -euo pipefail
+          COUNT=$(curl -sf -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
+            "https://discord.com/api/v10/guilds/$GUILD_ID?with_counts=true" \
+            | python3 -c "import sys,json; print(int(json.load(sys.stdin)['approximate_member_count']))")
+          # fail-safe: never publish a zero/garbage count — the page keeps its
+          # last-good number if this job fails (the front-end also guards > 0)
+          test "$COUNT" -ge 1
+          python3 - "$COUNT" <<'PY'
+          import json, sys, datetime
+          json.dump(
+            {"members": int(sys.argv[1]),
+             "updated": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")},
+            open("aixuxr-stats.json", "w"), indent=1)
+          PY
+
+      - name: Commit only if the count changed
+        run: |
+          git config user.name  "aixuxr-stats"
+          git config user.email "actions@users.noreply.github.com"
+          git add aixuxr-stats.json
+          git diff --cached --quiet || { git commit -m "stats: member count refresh"; git push; }
